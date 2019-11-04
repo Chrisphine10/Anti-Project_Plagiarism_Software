@@ -1,28 +1,23 @@
 package com.plag;
 
-
 import java.io.IOException;
-import java.net.http.HttpResponse;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.catalina.connector.Request;
-
 /**
- * Servlet implementation class PlagServletAPI
+ * Servlet implementation class LoginServlet
  */
-@WebServlet("/PlagServletAPI")
-public class PlagServletAPI extends HttpServlet {
+@WebServlet("/LoginServlet")
+public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public PlagServletAPI() {
+    public LoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,7 +27,7 @@ public class PlagServletAPI extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

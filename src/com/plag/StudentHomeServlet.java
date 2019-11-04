@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Auth
+ * Servlet implementation class StudentHomeServlet
  */
-@WebServlet("/Auth")
-public class AuthServlet extends HttpServlet {
+@WebServlet("/StudentHomeServlet")
+public class StudentHomeServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AuthServlet() {
+    public StudentHomeServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,9 +36,6 @@ public class AuthServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
-		String email = request.getParameter("email");
-		
-		request.getSession().setAttribute("email", email);
 	}
 
 }
