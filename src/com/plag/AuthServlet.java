@@ -11,13 +11,13 @@ import javax.servlet.http.HttpServletResponse;
  * Servlet implementation class Auth
  */
 @WebServlet("/Auth")
-public class Auth extends HttpServlet {
+public class AuthServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Auth() {
+    public AuthServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,6 +36,9 @@ public class Auth extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+		String email = request.getParameter("email");
+		
+		request.getSession().setAttribute("email", email);
 	}
 
 }
