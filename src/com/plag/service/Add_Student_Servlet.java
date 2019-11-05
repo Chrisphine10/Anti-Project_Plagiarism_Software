@@ -1,4 +1,4 @@
-package com.plag;
+package com.plag.service;
 
 import java.io.IOException;
 
