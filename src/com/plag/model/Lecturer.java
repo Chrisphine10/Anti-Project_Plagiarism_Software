@@ -1,7 +1,7 @@
 package com.plag.model;
 
 public class Lecturer {
-	  public String lecturer_id_no;
+	  public int lecturer_id_no;
 	  public String first_name;
 	  public String last_name;
 	  public String payroll_number;
@@ -14,7 +14,7 @@ public class Lecturer {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Lecturer(String lecturer_id_no, String first_name, String last_name, String payroll_number, String email,
+	public Lecturer(int lecturer_id_no, String first_name, String last_name, String payroll_number, String email,
 			String phone_number, String password) {
 		super();
 		this.lecturer_id_no = lecturer_id_no;
@@ -26,11 +26,11 @@ public class Lecturer {
 		this.password = password;
 	}
 
-	public String getLecturer_id_no() {
+	public int getLecturer_id_no() {
 		return lecturer_id_no;
 	}
 
-	public void setLecturer_id_no(String lecturer_id_no) {
+	public void setLecturer_id_no(int lecturer_id_no) {
 		this.lecturer_id_no = lecturer_id_no;
 	}
 
@@ -80,11 +80,7 @@ public class Lecturer {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-
-
-	  
+	} 
 	  
 	  
 	}
