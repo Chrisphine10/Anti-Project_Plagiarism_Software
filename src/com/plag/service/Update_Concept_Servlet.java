@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class Auth
+ * Servlet implementation class ConceptHandler
  */
-@WebServlet("/Auth")
-public class Auth extends HttpServlet {
+@WebServlet("/ConceptHandler")
+public class Update_Concept_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public Auth() {
+    public Update_Concept_Servlet() {
         super();
         // TODO Auto-generated constructor stub
     }

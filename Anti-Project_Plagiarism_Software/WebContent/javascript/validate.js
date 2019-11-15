@@ -1,6 +1,6 @@
 function matchpass(){
-var firstpassword=document.signup.password.value;
-var secondpassword=document.signup.password2.value;
+var firstpassword=document.studentsignup.password.value;
+var secondpassword=document.studentsignup.password2.value;
 
 if(firstpassword==secondpassword){
 return true;

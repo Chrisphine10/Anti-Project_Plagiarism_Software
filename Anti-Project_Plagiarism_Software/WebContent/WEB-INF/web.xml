@@ -1,6 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>Anti-Project_Plagiarism_Software</display-name>
+  <servlet>
+  <servlet-name>Add_Lecturer_Servlet</servlet-name>
+  <servlet-class>com.plag.service.Add_Lecturer_Servlet</servlet-class>
+  </servlet>
+  <servlet>
+  <servlet-name>Add_Student_Servlet</servlet-name>
+  <servlet-class>com.plag.service.Add_Student_Servlet</servlet-class>
+  </servlet>
+  <servlet>
+  <servlet-name>Add_Concept_Servlet</servlet-name>
+  <servlet-class>com.plag.service.Add_Concept_Servlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>Add_Lecturer_Servlet</servlet-name>
+  <url-pattern>/addlecturer</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  <servlet-name>Add_Student_Servlet</servlet-name>
+  <url-pattern>/addstudent</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  <servlet-name>Add_Concept_Servlet</servlet-name>
+  <url-pattern>/addconcept</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>delete_Lecturer_Servlet</servlet-name>
+  <servlet-class>com.plag.service.Delete_Lecturer_Servlet</servlet-class>
+  </servlet>
+  <servlet>
+  <servlet-name>Delete_Student_Servlet</servlet-name>
+  <servlet-class>com.plag.service.Add_Student_Servlet</servlet-class>
+  </servlet>
+  <servlet>
+  <servlet-name>Delete_Concept_Servlet</servlet-name>
+  <servlet-class>com.plag.service.Delete_Concept_Servlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>Delete_Lecturer_Servlet</servlet-name>
+  <url-pattern>/deletelecturer</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  <servlet-name>Delete_Student_Servlet</servlet-name>
+  <url-pattern>/deletestudent</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  <servlet-name>Delete_Concept_Servlet</servlet-name>
+  <url-pattern>/deleteconcept</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  <servlet-name>Update_Lecturer_Servlet</servlet-name>
+  <servlet-class>com.plag.service.Update_Lecturer_Servlet</servlet-class>
+  </servlet>
+  <servlet>
+  <servlet-name>Update_Student_Servlet</servlet-name>
+  <servlet-class>com.plag.service.Update_Student_Servlet</servlet-class>
+  </servlet>
+  <servlet>
+  <servlet-name>Update_Concept_Servlet</servlet-name>
+  <servlet-class>com.plag.service.Update_Concept_Servlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>Update_Lecturer_Servlet</servlet-name>
+  <url-pattern>/updatelecturer</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  <servlet-name>Update_Student_Servlet</servlet-name>
+  <url-pattern>/updatestudent</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  <servlet-name>Update_Concept_Servlet</servlet-name>
+  <url-pattern>/updateconcept</url-pattern>
+  </servlet-mapping>
+  
+  
+   <servlet>
+  <servlet-name>View_Lecturer_Servlet</servlet-name>
+  <servlet-class>com.plag.service.View_Lecturer_Servlet</servlet-class>
+  </servlet>
+  <servlet>
+  <servlet-name>View_Student_Servlet</servlet-name>
+  <servlet-class>com.plag.service.View_Student_Servlet</servlet-class>
+  </servlet>
+  <servlet>
+  <servlet-name>View_Concept_Servlet</servlet-name>
+  <servlet-class>com.plag.service.View_Concept_Servlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  <servlet-name>View_Lecturer_Servlet</servlet-name>
+  <url-pattern>/viewlecturer</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  <servlet-name>View_Student_Servlet</servlet-name>
+  <url-pattern>/viewstudent</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  <servlet-name>View_Concept_Servlet</servlet-name>
+  <url-pattern>/viewconcept</url-pattern>
+  </servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
