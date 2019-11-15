@@ -23,7 +23,7 @@ public class LecturerDao {
         try{  
             Connection con=ConceptDao.getConnection();  
             PreparedStatement ps=con.prepareStatement(  
-                         "insert into user905(name,password,email,country) values (?,?,?,?)");  
+                         "insert into lecturer_details(lecturer_id_no,fname, lname, password, email, payroll_number, email) values (?,?,?,?)");  
             ps.setInt(1,l.getLecturer_id_no());  
             ps.setString(2,l.getFirst_name());  
             ps.setString(3,l.getLast_name());  
@@ -45,7 +45,7 @@ public class LecturerDao {
         try{  
             Connection con=ConceptDao.getConnection();  
             PreparedStatement ps=con.prepareStatement(  
-                         "update user905 set name=?,password=?,email=?,country=? where id=?");  
+                         "update lecturer_details set lecturer_id_no=?,fname=?, lname=?, password=?, email=?, payroll_number=?, email=? where lecturer_id_no=?");  
             ps.setInt(1,l.getLecturer_id_no());  
             ps.setString(2,l.getFirst_name());  
             ps.setString(3,l.getLast_name());  
@@ -67,7 +67,7 @@ public class LecturerDao {
         int status=0;  
         try{  
             Connection con=ConceptDao.getConnection();  
-            PreparedStatement ps=con.prepareStatement("delete from user905 where id=?");  
+            PreparedStatement ps=con.prepareStatement("delete from lecturer_details where lecturer_id_no=?");  
             ps.setInt(1,id);  
             status=ps.executeUpdate();  
               
@@ -81,7 +81,7 @@ public class LecturerDao {
           
         try{  
             Connection con=ConceptDao.getConnection();  
-            PreparedStatement ps=con.prepareStatement("select * from user905 where id=?");  
+            PreparedStatement ps=con.prepareStatement("select * from lecturer_details where lecturer_id_no=?");  
             ps.setInt(1,id);  
             ResultSet rs=ps.executeQuery();  
             if(rs.next()){  
@@ -103,7 +103,7 @@ public class LecturerDao {
           
         try{  
             Connection con=ConceptDao.getConnection();  
-            PreparedStatement ps=con.prepareStatement("select * from user905");  
+            PreparedStatement ps=con.prepareStatement("select * from lecturer_details");  
             ResultSet rs=ps.executeQuery();  
             while(rs.next()){  
                 Lecturer c=new Lecturer();  

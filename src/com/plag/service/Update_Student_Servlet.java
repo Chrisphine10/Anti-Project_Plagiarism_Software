@@ -1,15 +1,14 @@
 package com.plag.service;
 
 import java.io.IOException;
-
-import javax.servlet.RequestDispatcher;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import com.appsdeveloperblog.encryption.PasswordUtils;
+import com.plag.dao.StudentDao;
+import com.plag.model.Student;
 
 /**
  * Servlet implementation class Auth
@@ -18,28 +17,35 @@ import com.appsdeveloperblog.encryption.PasswordUtils;
 public class Update_Student_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public Update_Student_Servlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String fname = request.getParameter("first_name");
-		String lname = request.getParameter("last_name");
-		String email = request.getParameter("email");
-		String reg_no = request.getParameter("reg_no");
-		String passwordraw = request.getParameter("firstpassword");
-		String salt = PasswordUtils.getSalt(30);
-		String mySecurePassword = PasswordUtils.generateSecurePassword(passwordraw, salt);
-		RequestDispatcher rd = request.getRequestDispatcher("index.html");
-        rd.forward(request, response);
-	}
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)   
+	          throws ServletException, IOException {  
+	        response.setContentType("text/html");  
+	        PrintWriter out=response.getWriter();  
+	          
+	        String sid=request.getParameter("reg_no");  
+	        int id=Integer.parseInt(sid);  
+	        String fname=request.getParameter("fname");
+	        String lname=request.getParameter("lname"); 
+	        String email=request.getParameter("email");  
+	        String phone=request.getParameter("phone_number");
+	        String password=request.getParameter("password"); 
+	          
+	        Student s=new Student();  
+          s.setReg_no(id);  
+          s.setEmail(email);
+          s.setFirst_name(fname);  
+          s.setLast_name(lname);
+          s.setPassword(password);
+          s.setPhone_number(phone);
+	          
+	        int status=StudentDao.update(s);  
+	        if(status>0){  
+	            response.sendRedirect("/viewstudent");  
+	        }else{  
+	            out.println("Sorry! unable to update record");  
+	        }  
+	          
+	        out.close();  
+	    }
 
 }
