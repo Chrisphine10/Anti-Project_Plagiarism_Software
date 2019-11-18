@@ -13,7 +13,7 @@ import com.plag.model.Student;
 /**
  * Servlet implementation class Auth
  */
-@WebServlet("/Auth")
+@WebServlet("/updatestudent")
 public class Update_Student_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

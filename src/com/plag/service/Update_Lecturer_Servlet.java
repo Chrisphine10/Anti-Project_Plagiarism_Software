@@ -13,7 +13,7 @@ import com.plag.model.Lecturer;
 /**
  * Servlet implementation class Add_Lecturer_Servlet
  */
-@WebServlet("/Add_Lecturer_Servlet")
+@WebServlet("/updatelecturer")
 public class Update_Lecturer_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 

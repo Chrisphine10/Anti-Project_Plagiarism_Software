@@ -13,7 +13,7 @@ import com.plag.dao.ConceptDao;
 /**
  * Servlet implementation class ConceptHandler
  */
-@WebServlet("/ConceptHandler")
+@WebServlet("/deleteconcept")
 public class Delete_Concept_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

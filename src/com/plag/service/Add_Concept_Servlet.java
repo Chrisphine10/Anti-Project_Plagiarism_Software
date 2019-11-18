@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ConceptHandler
  */
-@WebServlet("/ConceptHandler")
+@WebServlet("/addconcept")
 public class Add_Concept_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

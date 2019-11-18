@@ -11,7 +11,7 @@ import com.plag.dao.StudentDao;
 /**
  * Servlet implementation class Auth
  */
-@WebServlet("/Auth")
+@WebServlet("/deletestudent")
 public class Delete_Student_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

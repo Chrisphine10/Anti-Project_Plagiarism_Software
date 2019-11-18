@@ -10,7 +10,7 @@ import com.plag.dao.LecturerDao;
 /**
  * Servlet implementation class Auth
  */
-@WebServlet("/Auth")
+@WebServlet("/deletelecturer")
 public class Delete_Lecturer_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        

@@ -14,7 +14,7 @@ import com.appsdeveloperblog.encryption.PasswordUtils;
 /**
  * Servlet implementation class Add_Lecturer_Servlet
  */
-@WebServlet("/Add_Lecturer_Servlet")
+@WebServlet("/addlecturer")
 public class Add_Lecturer_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
