@@ -82,33 +82,6 @@
 		<url-pattern>/updateconcept</url-pattern>
 	</servlet-mapping>
 
-
-	<servlet>
-		<servlet-name>View_Lecturer_Servlet</servlet-name>
-		<servlet-class>com.plag.service.View_Lecturer_Servlet</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>View_Student_Servlet</servlet-name>
-		<servlet-class>com.plag.service.View_Student_Servlet</servlet-class>
-	</servlet>
-	<servlet>
-		<servlet-name>View_Concept_Servlet</servlet-name>
-		<servlet-class>com.plag.service.View_Concept_Servlet</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>View_Lecturer_Servlet</servlet-name>
-		<url-pattern>/viewlecturer</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>View_Student_Servlet</servlet-name>
-		<url-pattern>/viewstudent</url-pattern>
-	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>View_Concept_Servlet</servlet-name>
-		<url-pattern>/viewconcept</url-pattern>
-	</servlet-mapping>
-
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
