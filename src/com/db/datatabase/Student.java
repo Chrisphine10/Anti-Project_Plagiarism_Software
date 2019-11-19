@@ -1,7 +1,7 @@
 package com.db.datatabase;
 
 public class Student {
-	  public int reg_no;
+	  public String reg_no;
 	  public String first_name;
 	  public String last_name;
 	  public String email;
@@ -14,7 +14,7 @@ public class Student {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Student(int reg_no, String first_name, String last_name, String email, String phone_number, String password,
+	public Student(String reg_no, String first_name, String last_name, String email, String phone_number, String password,
 			String lecturer_id_no) {
 		super();
 		this.reg_no = reg_no;
@@ -26,11 +26,11 @@ public class Student {
 		this.lecturer_id_no = lecturer_id_no;
 	}
 
-	public int getReg_no() {
+	public String getReg_no() {
 		return reg_no;
 	}
 
-	public void setReg_no(int reg_no) {
+	public void setReg_no(String reg_no) {
 		this.reg_no = reg_no;
 	}
 
