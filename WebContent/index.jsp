@@ -6,10 +6,10 @@
 </head>
 <body>
 	<p>
-		<a href="/student">Login</a>
+		<a href="auth/login.jsp">Login</a>
 	</p>
 	<p>
-		<a>Sign Up</a>
+		<a href="auth/studentsignup.jsp">Sign Up</a>
 	</p>
 	<h1>Welcome to the Anti Project Plagiarism Software</h1>
 </body>
