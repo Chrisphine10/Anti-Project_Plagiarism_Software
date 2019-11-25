@@ -31,7 +31,7 @@ public class Add_Concept_Servlet extends HttpServlet {
 			c.setReg_no(reg_no);
 			int status = ConceptDao.save(c);
 			if (status > 0) {
-				System.out.print("<p>Concept added successfully!</p>");
+				System.out.print("<p>Conq	cept added successfully!</p>");
 				request.getRequestDispatcher("html/submitsuccess.html").include(request, response);
 			} else {
 				System.out.println("Sorry! unable to save record");
