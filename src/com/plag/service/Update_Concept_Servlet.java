@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,7 +14,6 @@ import com.plag.model.Concept;
 /**
  * Servlet implementation class ConceptHandler
  */
-@WebServlet("/updateconcept")
 public class Update_Concept_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -24,17 +22,16 @@ public class Update_Concept_Servlet extends HttpServlet {
 	        response.setContentType("text/html");  
 	        PrintWriter out=response.getWriter();  
 	          
-	        String sid=request.getParameter("id");  
-	        int id=Integer.parseInt(sid);  
+	        //String sid=request.getParameter("id");  
+	        //int id=Integer.parseInt(sid);  
 	        String name=request.getParameter("name");  
 	        String reg_no=request.getParameter("reg_no");  
 	        String cstatus=request.getParameter("status");  
 	        String title=request.getParameter("title");  
 	          
 	        Concept c=new Concept();  
-            c.setConcept_paper_id(id);  
             c.setTitle(title);  
-            c.setConcept_paper_name(name);  
+            c.setConcept_paper(name);  
             c.setReg_no(reg_no);
             c.setStatus(cstatus); 
 	          

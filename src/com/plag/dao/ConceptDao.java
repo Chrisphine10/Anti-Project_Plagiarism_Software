@@ -27,7 +27,7 @@ public class ConceptDao {
                          "insert into user905(name,password,email,country) values (?,?,?,?)");  
             ps.setInt(1,c.getConcept_paper_id());  
             ps.setString(2,c.getTitle());  
-            ps.setString(3,c.getConcept_paper_name());  
+            ps.setString(3,c.getConcept_paper());  
             ps.setString(4,c.getReg_no());
             ps.setString(5,c.getDate_of_submission());
             ps.setString(6,c.getDate_of_acceptance());
@@ -49,14 +49,14 @@ public class ConceptDao {
                          "update user905 set name=?,password=?,email=?,country=? where id=?");  
             ps.setInt(1,c.getConcept_paper_id());  
             ps.setString(2,c.getTitle());  
-            ps.setString(3,c.getConcept_paper_name());  
+            ps.setString(3,c.getConcept_paper());  
             ps.setString(4,c.getReg_no());
             ps.setString(5,c.getDate_of_submission());
             ps.setString(6,c.getDate_of_acceptance());
             ps.setString(7,c.getStatus());
               
             status=ps.executeUpdate();  
-              
+           
             con.close();  
         }catch(Exception ex){ex.printStackTrace();}  
           
@@ -86,7 +86,7 @@ public class ConceptDao {
             if(rs.next()){  
                 c.setConcept_paper_id(rs.getInt(1));  
                 c.setTitle(rs.getString(2));  
-                c.setConcept_paper_name(rs.getString(3));  
+                c.setConcept_paper(rs.getString(3));  
                 c.setReg_no(rs.getString(4));  
                 c.setDate_of_submission(rs.getString(5));
                 c.setDate_of_acceptance(rs.getString(6));
@@ -97,6 +97,28 @@ public class ConceptDao {
           
         return c;  
     }  
+    public static Concept getConceptByStudent(int id){  
+        Concept c=new Concept();  
+          
+        try{  
+            Connection con=ConceptDao.getConnection();  
+            PreparedStatement ps=con.prepareStatement("select * from user905 where id=?");  
+            ps.setInt(1,id);  
+            ResultSet rs=ps.executeQuery();  
+            if(rs.next()){  
+                c.setConcept_paper_id(rs.getInt(1));  
+                c.setTitle(rs.getString(2));  
+                c.setConcept_paper(rs.getString(3));  
+                c.setReg_no(rs.getString(4));  
+                c.setDate_of_submission(rs.getString(5));
+                c.setDate_of_acceptance(rs.getString(6));
+                c.setStatus(rs.getString(7));
+            }  
+            con.close();  
+        }catch(Exception ex){ex.printStackTrace();}  
+          
+        return c;  
+    }
     public static List<Concept> getAllConcepts(){  
         List<Concept> list=new ArrayList<Concept>();  
           
@@ -108,7 +130,7 @@ public class ConceptDao {
                 Concept c=new Concept();  
                 c.setConcept_paper_id(rs.getInt(1));  
                 c.setTitle(rs.getString(2));  
-                c.setConcept_paper_name(rs.getString(3));  
+                c.setConcept_paper(rs.getString(3));  
                 c.setReg_no(rs.getString(4));  
                 c.setDate_of_submission(rs.getString(5));
                 c.setDate_of_acceptance(rs.getString(6));

@@ -8,17 +8,84 @@
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 	<session-config>
-	<session-timeout>25</session-timeout>
+		<session-timeout>25</session-timeout>
 	</session-config>
-		<servlet>
+	 <servlet>
+		<servlet-name>Add_Lecturer_Servlet</servlet-name>
+		<servlet-class>com.plag.service.Add_Lecturer_Servlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Add_Lecturer_Servlet</servlet-name>
+		<url-pattern>/addlecturer</url-pattern>
+	</servlet-mapping>
+	<servlet>
 		<servlet-name>Add_Student_Servlet</servlet-name>
 		<servlet-class>com.plag.service.Add_Student_Servlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Add_Concept_Servlet</servlet-name>
+		<servlet-class>com.plag.service.Add_Concept_Servlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>Add_Student_Servlet</servlet-name>
 		<url-pattern>/addstudent</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Add_Concept_Servlet</servlet-name>
+		<url-pattern>/addconcept</url-pattern>
+	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>Delete_Lecturer_Servlet</servlet-name>
+		<servlet-class>com.plag.service.Delete_Lecturer_Servlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Delete_Student_Servlet</servlet-name>
+		<servlet-class>com.plag.service.Add_Student_Servlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Delete_Concept_Servlet</servlet-name>
+		<servlet-class>com.plag.service.Delete_Concept_Servlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Delete_Lecturer_Servlet</servlet-name>
+		<url-pattern>/deletelecturer</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Delete_Student_Servlet</servlet-name>
+		<url-pattern>/deletestudent</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Delete_Concept_Servlet</servlet-name>
+		<url-pattern>/deleteconcept</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>Update_Lecturer_Servlet</servlet-name>
+		<servlet-class>com.plag.service.Update_Lecturer_Servlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Update_Student_Servlet</servlet-name>
+		<servlet-class>com.plag.service.Update_Student_Servlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>Update_Concept_Servlet</servlet-name>
+		<servlet-class>com.plag.service.Update_Concept_Servlet</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Update_Lecturer_Servlet</servlet-name>
+		<url-pattern>/updatelecturer</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Update_Student_Servlet</servlet-name>
+		<url-pattern>/updatestudent</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Update_Concept_Servlet</servlet-name>
+		<url-pattern>/updateconcept</url-pattern>
+	</servlet-mapping>
 	<error-page>
 		<!-- Missing login -->
 		<error-code>401</error-code>

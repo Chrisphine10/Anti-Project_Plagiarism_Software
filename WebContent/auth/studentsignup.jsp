@@ -4,11 +4,12 @@
 <meta charset="ISO-8859-1">
 <title>Student Registration</title>
 </head>
+
 <body>
 
 	<div class="signupform">
 	<h3>Sign Up</h3>
-		<form action="/addstudent" method="get">
+		<form action="../addstudent" method="post">
 			<label>First Name</label><br>
 			<input type="text" name="fname" required="required"
 				placeholder="Enter your first name"><br>
@@ -27,7 +28,7 @@
 				<input type="password" name="password2"
 				placeholder="Confirm your password" required="required"
 				onchange="matchpass()"><br>
-				<input type="submit" value="login">
+				<input type="submit" value="Sign Up">
 		</form>
 	</div>
 
