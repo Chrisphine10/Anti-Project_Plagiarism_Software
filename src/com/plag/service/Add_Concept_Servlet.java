@@ -10,7 +10,6 @@ import javax.servlet.http.HttpSession;
 import com.plag.dao.ConceptDao;
 import com.plag.model.Concept;
 
-import copyleaks.sdk.api.Copyleaksall;
 
 /**
  * Servlet implementation class ConceptHandler
@@ -30,7 +29,7 @@ public class Add_Concept_Servlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String concept_paper = request.getParameter("concept_paper");
 		String reg_no = request.getParameter("reg_no");
-		 plag_state = Copyleaksall.tester(title, "testdocs");
+		 //plag_state = Copyleaksall.tester(title, "testdocs");
 		
 		if (plag_state >= 50) {
 			Concept c = new Concept();
