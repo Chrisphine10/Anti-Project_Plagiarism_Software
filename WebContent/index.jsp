@@ -11,6 +11,6 @@
 	<p>
 		<a href="auth/studentsignup.jsp">Sign Up</a>
 	</p>
-	<h1>Welcome to the Anti Project Plagiarism Software</h1>
+	<h1>Welcome to, the Anti Project Plagiarism Software</h1>
 </body>
 </html>

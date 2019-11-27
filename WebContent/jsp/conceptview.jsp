@@ -11,7 +11,11 @@
 	<%
 		String sid = request.getParameter("reg_no");
 		int id = Integer.parseInt(sid);
-		Concept c = ConceptDao.getConceptByStudent(id);
+		if (sid != null) {
+		Concept c = ConceptDao.getConceptById(id);
+		
+		}
+		Concept c = ConceptDao.getConceptById(id);
 	%>
 	<div class="concept">
 		<h1>Concept Paper</h1>

@@ -97,15 +97,16 @@ public class ConceptDao {
           
         return c;  
     }  
-    public static Concept getConceptByStudent(int id){  
-        Concept c=new Concept();  
+    public static List<Concept> getConceptByStudent(int reg_no){  
+    	List<Concept> list=new ArrayList<Concept>();  
           
         try{  
             Connection con=ConceptDao.getConnection();  
-            PreparedStatement ps=con.prepareStatement("select * from user905 where id=?");  
-            ps.setInt(1,id);  
+            PreparedStatement ps=con.prepareStatement("select * from user905 where reg_no=?");  
+            ps.setInt(1,reg_no);  
             ResultSet rs=ps.executeQuery();  
-            if(rs.next()){  
+            while(rs.next()){  
+            	Concept c=new Concept(); 
                 c.setConcept_paper_id(rs.getInt(1));  
                 c.setTitle(rs.getString(2));  
                 c.setConcept_paper(rs.getString(3));  
@@ -113,11 +114,12 @@ public class ConceptDao {
                 c.setDate_of_submission(rs.getString(5));
                 c.setDate_of_acceptance(rs.getString(6));
                 c.setStatus(rs.getString(7));
+                list.add(c);
             }  
             con.close();  
-        }catch(Exception ex){ex.printStackTrace();}  
+        }catch(Exception c){c.printStackTrace();}  
           
-        return c;  
+        return list;  
     }
     public static List<Concept> getAllConcepts(){  
         List<Concept> list=new ArrayList<Concept>();  

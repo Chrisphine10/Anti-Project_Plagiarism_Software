@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.appsdeveloperblog.encryption.PasswordUtils;
 import com.plag.dao.LecturerDao;
@@ -20,6 +21,9 @@ public class Add_Lecturer_Servlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		 if (session.getAttribute("lecturer") != null) {
+			
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String fname = request.getParameter("first_name");
 		String lname = request.getParameter("last_name");
@@ -42,7 +46,7 @@ public class Add_Lecturer_Servlet extends HttpServlet {
         int status=LecturerDao.save(l);  
         if(status>0){  
             System.out.print("<p>Lecturer saved successfully!</p>");  
-            request.getRequestDispatcher("index.jsp").include(request, response);  
+            request.getRequestDispatcher("auth/login.jsp").include(request, response);  
         }else{  
             System.out.println("Sorry! unable to save record");  
         }  
@@ -51,5 +55,10 @@ public class Add_Lecturer_Servlet extends HttpServlet {
         
         
 	}
+		 else {
+		 System.out.println("Unauthorised access");
+	 }
 
+	}
+	
 }

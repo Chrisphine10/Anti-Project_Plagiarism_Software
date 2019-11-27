@@ -6,6 +6,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import com.plag.dao.StudentDao;
 import com.plag.model.Student;
 
@@ -20,7 +22,9 @@ public class Update_Student_Servlet extends HttpServlet {
 	          throws ServletException, IOException {  
 	        response.setContentType("text/html");  
 	        PrintWriter out=response.getWriter();  
-	          
+	        HttpSession session = request.getSession();
+			 if (session.getAttribute("student") != null) {
+				
 	        String sid=request.getParameter("reg_no");  
 	        int id=Integer.parseInt(sid);  
 	        String fname=request.getParameter("fname");
@@ -46,5 +50,8 @@ public class Update_Student_Servlet extends HttpServlet {
 	          
 	        out.close();  
 	    }
-
+			 else {
+				 System.out.println("Unauthorised access");
+			 }
+			}
 }

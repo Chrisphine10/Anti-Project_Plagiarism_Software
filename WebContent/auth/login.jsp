@@ -7,42 +7,22 @@
 <title>Login Page</title>
 </head>
 <body>
-	<h1>User Login</h1>
-	<h2>Account Type</h2>
-	<form action="#" method="get">
-		<select name="user_type">
-			<option value="Student">Student</option>
-			<option value="Lecturer">Lecturer</option>
-		</select>
-	</form>
+	<h1>Student Login</h1>
+	<p>Lecturer, click <a href="leclogin.jsp">here</a></p>
 
 	<div class="loginform">
 	<h3>Student Login</h3>
-		<form action="#" method="post">
+		<form action="../authservlet" method="post">
 			<label>Registration Number</label><br>
-			<input type="text" name="regno"
+			<input type="text" name="reg_no"
 				placeholder="Enter your registration number" required="required"><br>
 			<label>Password</label><br>
 			<input type="password" name="password"
 				placeholder="Enter your password" required="required"><br>
 				<input
-				type="submit" value="login">
+				type="submit" name="studentlogin" value="Login">
 		</form>
-	</div>
-
-	<div class="loginform">
-	<h3>Lecturer Login</h3>
-		<form action="#" method="post">
-			<label>Email</label><br>
-			<input type="email" name="email"
-				placeholder="Enter your email address" required="required"><br>
-			<label>Password</label><br>
-			<input type="password" name="password"
-				placeholder="Enter your password" required="required"><br>
-				<input
-				type="submit" value="login">
-		</form>
-	</div>
-
+	</div><br>
+<p>Don't have an account, click <a href="studentsignup.jsp">here</a></p>
 </body>
 </html>

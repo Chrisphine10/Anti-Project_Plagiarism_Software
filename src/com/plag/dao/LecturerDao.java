@@ -23,7 +23,7 @@ public class LecturerDao {
         try{  
             Connection con=ConceptDao.getConnection();  
             PreparedStatement ps=con.prepareStatement(  
-                         "insert into lecturer_details(lecturer_id_no,fname, lname, password, email, payroll_number, email) values (?,?,?,?)");  
+                         "insert into lecturer_details(lecturer_id_no,fname, lname, password, email, payroll_number, email) values (?,?,?,?,?,?,?)");  
             ps.setInt(1,l.getLecturer_id_no());  
             ps.setString(2,l.getFirst_name());  
             ps.setString(3,l.getLast_name());  
@@ -76,13 +76,13 @@ public class LecturerDao {
           
         return status;  
     }  
-    public static Lecturer getLecturerById(int id){  
+    public static Lecturer getLecturerByEmail(String email){  
         Lecturer c=new Lecturer();  
           
         try{  
             Connection con=ConceptDao.getConnection();  
             PreparedStatement ps=con.prepareStatement("select * from lecturer_details where lecturer_id_no=?");  
-            ps.setInt(1,id);  
+            ps.setString(1,email);  
             ResultSet rs=ps.executeQuery();  
             if(rs.next()){  
                 c.setLecturer_id_no(rs.getInt(1));  

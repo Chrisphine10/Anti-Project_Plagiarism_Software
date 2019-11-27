@@ -5,8 +5,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import com.plag.dao.ConceptDao;
 import com.plag.model.Concept;
+
+import copyleaks.sdk.api.Copyleaksall;
 
 /**
  * Servlet implementation class ConceptHandler
@@ -15,23 +19,27 @@ import com.plag.model.Concept;
 public class Add_Concept_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	boolean plag_state = true;
+	int plag_state = 0;
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		HttpSession session = request.getSession();
+		 if (session.getAttribute("lecturer") != null) {
+			
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		String title = request.getParameter("title");
 		String concept_paper = request.getParameter("concept_paper");
 		String reg_no = request.getParameter("reg_no");
-
-		if (plag_state == false) {
+		 plag_state = Copyleaksall.tester(title, "testdocs");
+		
+		if (plag_state >= 50) {
 			Concept c = new Concept();
 			c.setTitle(title);
 			c.setConcept_paper(concept_paper);
 			c.setReg_no(reg_no);
 			int status = ConceptDao.save(c);
 			if (status > 0) {
-				System.out.print("<p>Conq	cept added successfully!</p>");
+				System.out.print("<p>Concept added successfully!</p>");
 				request.getRequestDispatcher("html/submitsuccess.html").include(request, response);
 			} else {
 				System.out.println("Sorry! unable to save record");
@@ -44,6 +52,11 @@ public class Add_Concept_Servlet extends HttpServlet {
 			request.getRequestDispatcher("html/submitfailure.html").include(request, response);
 		}
 
+	}
+		 else {
+			 System.out.println("Unauthorised access");
+		 }
+		 
 	}
 
 }

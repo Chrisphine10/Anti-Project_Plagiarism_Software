@@ -1,3 +1,8 @@
+<%@ page import="com.plag.dao.*, com.plag.model.* "%>
+<%
+ if (session.getAttribute("lecturer") != null) {
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,3 +19,9 @@
 	</div>
 </body>
 </html>
+<% 
+ }
+ else {
+	 request.getRequestDispatcher("../auth/login.jsp").include(request, response);
+ }
+%>

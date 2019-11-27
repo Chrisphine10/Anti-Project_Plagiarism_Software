@@ -17,12 +17,12 @@ public class Add_Student_Servlet extends HttpServlet {
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String fname = request.getParameter("first_name");
-		String lname = request.getParameter("last_name");
+		String fname = request.getParameter("fname");
+		String lname = request.getParameter("lname");
 		String email = request.getParameter("email");
 		String s_reg_no = request.getParameter("reg_no");
 		int reg_no=Integer.parseInt(s_reg_no);
-		String passwordraw = request.getParameter("firstpassword");
+		String passwordraw = request.getParameter("password");
 		String salt = PasswordUtils.getSalt(30);
 		String mySecurePassword = PasswordUtils.generateSecurePassword(passwordraw, salt);
 		RequestDispatcher rd = request.getRequestDispatcher("index.html");
@@ -37,9 +37,9 @@ public class Add_Student_Servlet extends HttpServlet {
         int status=StudentDao.save(s);  
         if(status>0){  
             System.out.print("<p>Student saved successfully!</p>");  
-            request.getRequestDispatcher("index.jsp").include(request, response);  
+            request.getRequestDispatcher("/auth/login.jsp").include(request, response); 
         }else{  
-            System.out.println("<p>Sorry! unable to save record</p>");  
+            System.out.println("<p>Sorry! unable to save record</p>"); 
         }  
           
         System.out.close();  

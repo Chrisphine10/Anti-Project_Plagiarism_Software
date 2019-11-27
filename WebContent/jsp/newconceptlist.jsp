@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="com.plag.dao.*, com.plag.model.*, java.util.List"  %>
+<%
+ if (session.getAttribute("lecturer") != null) {
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,3 +42,9 @@ for(Concept c:list){
 </table>
 </body>
 </html>
+<% 
+ }
+ else {
+	 request.getRequestDispatcher("../auth/login.jsp").include(request, response);
+ }
+%>

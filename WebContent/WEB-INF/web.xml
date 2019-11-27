@@ -18,6 +18,17 @@
 		<servlet-name>Add_Lecturer_Servlet</servlet-name>
 		<url-pattern>/addlecturer</url-pattern>
 	</servlet-mapping>
+	
+	 <servlet>
+		<servlet-name>AuthServlet</servlet-name>
+		<servlet-class>com.plag.service.AuthServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>AuthServlet</servlet-name>
+		<url-pattern>/authservlet</url-pattern>
+	</servlet-mapping>
+	
+	
 	<servlet>
 		<servlet-name>Add_Student_Servlet</servlet-name>
 		<servlet-class>com.plag.service.Add_Student_Servlet</servlet-class>
