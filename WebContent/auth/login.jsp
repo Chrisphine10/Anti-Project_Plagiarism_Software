@@ -23,6 +23,6 @@
 				type="submit" name="studentlogin" value="Login">
 		</form>
 	</div><br>
-<p>Don't have an account, click <a href="studentsignup.jsp">here</a></p>
+<p>Don't have an account, click <a href="auth/studentsignup.jsp">here</a></p>
 </body>
 </html>

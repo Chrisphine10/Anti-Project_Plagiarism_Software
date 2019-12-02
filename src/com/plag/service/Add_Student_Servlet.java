@@ -25,9 +25,6 @@ public class Add_Student_Servlet extends HttpServlet {
 		String passwordraw = request.getParameter("password");
 		String salt = PasswordUtils.getSalt(30);
 		String mySecurePassword = PasswordUtils.generateSecurePassword(passwordraw, salt);
-		RequestDispatcher rd = request.getRequestDispatcher("index.html");
-        rd.forward(request, response);
-        
         Student s = new Student();
         s.setFirst_name(fname);
         s.setLast_name(lname);
@@ -38,9 +35,10 @@ public class Add_Student_Servlet extends HttpServlet {
         int status=StudentDao.save(s);  
         if(status>0){  
             System.out.print("<p>Student saved successfully!</p>");  
-            request.getRequestDispatcher("/auth/login.jsp").include(request, response); 
+            response.sendRedirect("/auth/login.jsp"); 
         }else{  
             System.out.println("<p>Sorry! unable to save record</p>"); 
+            response.sendRedirect("/auth/studentsignup.jsp"); 
         }  
           
         System.out.close();  

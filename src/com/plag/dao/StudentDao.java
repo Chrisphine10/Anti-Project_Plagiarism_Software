@@ -29,8 +29,7 @@ public class StudentDao implements DatabaseConn{
             ps.setString(3,s.getLast_name());
             ps.setString(4,s.getEmail());
             ps.setString(5,s.getPhone_number());
-            ps.setString(6,s.getPassword());
-            System.out.print("<p>success!</p>");     
+            ps.setString(6,s.getPassword());    
             status=ps.executeUpdate();  
               
             con.close();  

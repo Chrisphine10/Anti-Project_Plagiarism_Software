@@ -39,13 +39,13 @@ function matchpass(){
 				<label for="phone_no">Phone Number</label><br>
 				<input type="tel" name="phone_no" placeholder="Enter your phone number"><br>
 			<label for="password">Password</label><br>
-			<input type="password" name="password"
+			<input type="password" name="password" min="8" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
 				placeholder="Enter your password" required="required"><br>
 				<label for="password2">Confirm
 				Password</label><br>
 				<input type="password" name="password2"
 				placeholder="Confirm your password" required="required"><br>
-				<input type="submit" value="Sign Up" onclick="matchpass()">
+				<input type="submit" value="Sign Up" onclick="matchpass()" min="8">
 		</form>
 		<p>Have an account, click <a href="login.jsp">here</a></p>
 	</div>
