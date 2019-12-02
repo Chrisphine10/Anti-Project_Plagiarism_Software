@@ -14,12 +14,12 @@ import com.plag.model.Student;
 public class Add_Student_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String fname = request.getParameter("fname");
 		String lname = request.getParameter("lname");
 		String email = request.getParameter("email");
+		String phone = request.getParameter("phone_no");
 		String s_reg_no = request.getParameter("reg_no");
 		int reg_no=Integer.parseInt(s_reg_no);
 		String passwordraw = request.getParameter("password");
@@ -32,6 +32,7 @@ public class Add_Student_Servlet extends HttpServlet {
         s.setFirst_name(fname);
         s.setLast_name(lname);
         s.setEmail(email);
+        s.setPhone_number(phone);
         s.setReg_no(reg_no);
         s.setPassword(mySecurePassword);
         int status=StudentDao.save(s);  

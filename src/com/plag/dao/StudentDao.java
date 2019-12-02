@@ -7,32 +7,31 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.database.DatabaseConn;
 import com.plag.model.Student;
 
-public class StudentDao {
+public class StudentDao implements DatabaseConn{
 	public static Connection getConnection(){  
-        Connection con=null;  
+        Connection conn=null;  
         try{  
-            Class.forName("oracle.jdbc.driver.OracleDriver");  
-            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");  
+            Class.forName("com.mysql.jdbc.Driver").newInstance();  
+            
+            conn=DriverManager.getConnection(dbURL, username, password);  
         }catch(Exception e){System.out.println(e);}  
-        return con;  
+        return conn;  
     }  
     public static int save(Student s){  
         int status=0;  
         try{  
             Connection con=StudentDao.getConnection();  
-            PreparedStatement ps=con.prepareStatement(  
-                         "insert into user905(name,password,email,country) values (?,?,?,?)");  
+            PreparedStatement ps=con.prepareStatement("insert into student_details (reg_no, first_name, last_name, email, phone_no, password) values (?,?,?,?,?,?)");  
             ps.setInt(1,s.getReg_no());  
             ps.setString(2,s.getFirst_name());  
-            ps.setString(3,s.getLast_name());  
-            ps.setString(4,s.getLecturer_id_no());
-            ps.setString(5,s.getPassword());
-            ps.setString(6,s.getPhone_number());
-            ps.setString(7,s.getEmail());
-            
-              
+            ps.setString(3,s.getLast_name());
+            ps.setString(4,s.getEmail());
+            ps.setString(5,s.getPhone_number());
+            ps.setString(6,s.getPassword());
+            System.out.print("<p>success!</p>");     
             status=ps.executeUpdate();  
               
             con.close();  
@@ -45,14 +44,13 @@ public class StudentDao {
         try{  
             Connection con=StudentDao.getConnection();  
             PreparedStatement ps=con.prepareStatement(  
-                         "update user905 set name=?,password=?,email=?,country=? where id=?");  
+                         "update student_details set reg_no=?, first_name=?, last_name=?, email=?, phone_no=?, password=? where reg_no=?");  
             ps.setInt(1,s.getReg_no());  
             ps.setString(2,s.getFirst_name());  
-            ps.setString(3,s.getLast_name());  
-            ps.setString(4,s.getLecturer_id_no());
-            ps.setString(5,s.getPassword());
-            ps.setString(6,s.getPhone_number());
-            ps.setString(7,s.getEmail());
+            ps.setString(3,s.getLast_name());
+            ps.setString(4,s.getPassword());
+            ps.setString(5,s.getPhone_number());
+            ps.setString(6,s.getEmail());
                           
             status=ps.executeUpdate();  
               
@@ -65,7 +63,7 @@ public class StudentDao {
         int status=0;  
         try{  
             Connection con=StudentDao.getConnection();  
-            PreparedStatement ps=con.prepareStatement("delete from user905 where id=?");  
+            PreparedStatement ps=con.prepareStatement("delete from student_details where reg_no=?");  
             ps.setInt(1,id);  
             status=ps.executeUpdate();  
               
@@ -79,7 +77,7 @@ public class StudentDao {
           
         try{  
             Connection con=StudentDao.getConnection();  
-            PreparedStatement ps=con.prepareStatement("select * from user905 where id=?");  
+            PreparedStatement ps=con.prepareStatement("select * from student_details where reg_no=?");  
             ps.setInt(1,id);  
             ResultSet rs=ps.executeQuery();  
             if(rs.next()){  
@@ -89,7 +87,6 @@ public class StudentDao {
                 s.setLast_name(rs.getString(4));  
                 s.setPassword(rs.getString(5));
                 s.setPhone_number(rs.getString(6));
-                s.setLecturer_id_no(rs.getString(7));
             }  
             con.close();  
         }catch(Exception ex){ex.printStackTrace();}  
@@ -101,7 +98,7 @@ public class StudentDao {
           
         try{  
             Connection con=StudentDao.getConnection();  
-            PreparedStatement ps=con.prepareStatement("select * from user905");  
+            PreparedStatement ps=con.prepareStatement("select * from student_details");  
             ResultSet rs=ps.executeQuery();  
             while(rs.next()){  
                 Student s=new Student();  
@@ -112,7 +109,6 @@ public class StudentDao {
                 s.setLast_name(rs.getString(4));  
                 s.setPassword(rs.getString(5));
                 s.setPhone_number(rs.getString(6));
-                s.setLecturer_id_no(rs.getString(7));
                 list.add(s);  
             }  
             con.close();  

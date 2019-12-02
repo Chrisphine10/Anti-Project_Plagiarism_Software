@@ -24,20 +24,24 @@ function matchpass(){
 	<div class="signupform">
 	<h3>Sign Up</h3>
 		<form action="../addstudent" method="post">
-			<label>First Name</label><br>
+			<label for="fname">First Name</label><br>
 			<input type="text" name="fname" required="required"
 				placeholder="Enter your first name"><br>
-				<label>Last
+				<label for="lname">Last
 				Name</label><br>
 				<input type="text" name="lname" required="required"
 				placeholder="Enter your last name"><br>
-				<label>Registration
+				<label for="reg_no">Registration
 				Number</label><br>
 				<input type="text" name="reg_no" placeholder="Enter your registration number" required="required"><br>
-			<label>Password</label><br>
+				<label for="email">Email</label><br>
+				<input type="email" name="email" placeholder="Enter your email address"><br>
+				<label for="phone_no">Phone Number</label><br>
+				<input type="tel" name="phone_no" placeholder="Enter your phone number"><br>
+			<label for="password">Password</label><br>
 			<input type="password" name="password"
 				placeholder="Enter your password" required="required"><br>
-				<label>Confirm
+				<label for="password2">Confirm
 				Password</label><br>
 				<input type="password" name="password2"
 				placeholder="Confirm your password" required="required"><br>

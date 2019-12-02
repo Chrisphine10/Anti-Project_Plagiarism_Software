@@ -1,19 +1,16 @@
 package com.plag.service;
 
 import java.io.IOException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
+import io.joshworks.restclient.http.HttpResponse;
+import com.plag.PlagServletAPI;
 import com.plag.dao.ConceptDao;
 import com.plag.model.Concept;
-
-
-/**
- * Servlet implementation class ConceptHandler
- */
 
 public class Add_Concept_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -29,7 +26,16 @@ public class Add_Concept_Servlet extends HttpServlet {
 		String title = request.getParameter("title");
 		String concept_paper = request.getParameter("concept_paper");
 		String reg_no = request.getParameter("reg_no");
-		 //plag_state = Copyleaksall.tester(title, "testdocs");
+		
+		PlagServletAPI plag = new PlagServletAPI();
+		
+		List<Concept> list=ConceptDao.getAllConcepts();
+		for(Concept c:list){
+			String testpaper = c.concept_paper;
+			HttpResponse<String> test = plag.plagcheck(concept_paper, testpaper);
+			String newtest = test.getBody();
+		   System.out.println(newtest);
+		}
 		
 		if (plag_state >= 50) {
 			Concept c = new Concept();
