@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.database.DatabaseConn;
 import com.plag.model.Student;
 
@@ -14,10 +13,10 @@ public class StudentDao implements DatabaseConn{
 	public static Connection getConnection(){  
         Connection conn=null;  
         try{  
-            Class.forName("com.mysql.jdbc.Driver").newInstance();  
+            Class.forName("com.mysql.cj.jdbc.Driver");  
             
             conn=DriverManager.getConnection(dbURL, username, password);  
-        }catch(Exception e){System.out.println(e);}  
+        }catch(Exception e){System.out.println("DB connection failed " + e);}  
         return conn;  
     }  
     public static int save(Student s){  
