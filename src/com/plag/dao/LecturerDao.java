@@ -83,17 +83,17 @@ public class LecturerDao implements DatabaseConn {
           
         try{  
             Connection con=ConceptDao.getConnection();  
-            PreparedStatement ps=con.prepareStatement("select * from lecturer_details where lecturer_id_no=?");  
+            PreparedStatement ps=con.prepareStatement("select * from lecturer_details where email=?");  
             ps.setString(1,email);  
             ResultSet rs=ps.executeQuery();  
             if(rs.next()){  
                 c.setLecturer_id_no(rs.getInt(1));  
                 c.setFirst_name(rs.getString(2));  
-                c.setLast_name(rs.getString(3));  
-                c.setPassword(rs.getString(4));  
-                c.setPayroll_number(rs.getString(5));
-                c.setPhone_number(rs.getString(6));
-                c.setEmail(rs.getString(7));
+                c.setLast_name(rs.getString(3));
+                c.setEmail(rs.getString(4));  
+                c.setPhone_number(rs.getString(5));
+                c.setPayroll_number(rs.getString(6));
+                c.setPassword(rs.getString(7));
             }  
             con.close();  
         }catch(Exception ex){ex.printStackTrace();}  
@@ -111,11 +111,11 @@ public class LecturerDao implements DatabaseConn {
                 Lecturer c=new Lecturer();  
                 c.setLecturer_id_no(rs.getInt(1));  
                 c.setFirst_name(rs.getString(2));  
-                c.setLast_name(rs.getString(3));  
-                c.setPassword(rs.getString(4));  
-                c.setPayroll_number(rs.getString(5));
-                c.setPhone_number(rs.getString(6));
-                c.setEmail(rs.getString(7));  
+                c.setLast_name(rs.getString(3));
+                c.setEmail(rs.getString(4));  
+                c.setPhone_number(rs.getString(5));
+                c.setPayroll_number(rs.getString(6));
+                c.setPassword(rs.getString(7));  
                 list.add(c);  
             }  
             con.close();  

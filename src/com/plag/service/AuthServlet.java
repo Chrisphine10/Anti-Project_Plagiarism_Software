@@ -42,12 +42,13 @@ public class AuthServlet extends HttpServlet {
 		{
 		String email = request.getParameter("email");
 		String passwordraw = request.getParameter("password");
-		String salt = PasswordUtils.getSalt(30);
-		String mySecurePassword = PasswordUtils.generateSecurePassword(passwordraw, salt);
+		//String salt = PasswordUtils.getSalt(30);
+		//String mySecurePassword = PasswordUtils.generateSecurePassword(passwordraw, salt);
 
 		Lecturer l = LecturerDao.getLecturerByEmail(email);
 		String realpass = l.getPassword();
-		if(mySecurePassword == realpass) {
+		System.out.println(realpass + passwordraw);
+		if(passwordraw == realpass) {
 			System.out.println("<p>Success!</p>");
 			HttpSession session = request.getSession();
 			session.setAttribute("lecturer", l);

@@ -16,9 +16,7 @@ if (session.getAttribute("student") != null && session.getAttribute("lecturer") 
 <input type="submit" name="accept" value="Yes, I want to delete"><br>
 <input type="submit" name="decline" value="No">
 </form>
-
 <%
-
 } else {
 	response.sendRedirect("../auth/login.jsp");
 }
