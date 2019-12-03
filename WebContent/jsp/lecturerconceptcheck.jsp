@@ -26,6 +26,6 @@
 <% 
  }
  else {
-	 request.getRequestDispatcher("../auth/login.jsp").include(request, response);
+	 request.getRequestDispatcher("../auth/leclogin.jsp").include(request, response);
  }
 %>

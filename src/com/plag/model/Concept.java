@@ -1,6 +1,5 @@
 package com.plag.model;
 
-
 public class Concept {
 	public int concept_paper_id;
 	public String title;

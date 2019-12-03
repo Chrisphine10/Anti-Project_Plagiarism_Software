@@ -9,7 +9,7 @@
 </head>
 <body>
 <%
-List<Concept> list=ConceptDao.getAllConcepts();
+List<Concept> list=ConceptDao.getAllConceptsByStatus("Accepted");
 %>
 
 <table>

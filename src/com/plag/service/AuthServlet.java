@@ -48,11 +48,11 @@ public class AuthServlet extends HttpServlet {
 		Lecturer l = LecturerDao.getLecturerByEmail(email);
 		String realpass = l.getPassword();
 		System.out.println(realpass + passwordraw);
-		if(passwordraw == realpass) {
+		if(passwordraw.equals(realpass)) {
 			System.out.println("<p>Success!</p>");
 			HttpSession session = request.getSession();
 			session.setAttribute("lecturer", l);
-			response.sendRedirect("../jsp/lecturerhomepage.jsp"); 
+			response.sendRedirect("jsp/lecturerhomepage.jsp"); 
 		}
 		else {
 			System.out.println("<p>Password entered is incorrect!</p>");

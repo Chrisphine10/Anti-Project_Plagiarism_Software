@@ -135,6 +135,33 @@ public class ConceptDao implements DatabaseConn{
           
         return list;  
     }  
+    public static List<Concept> getAllConceptsByStatus(String statuss){  
+        List<Concept> list=new ArrayList<Concept>();  
+          
+        try{  
+            Connection con=ConceptDao.getConnection();  
+            PreparedStatement ps=con.prepareStatement("select * from concept_paper where status=?"); 
+            ps.setString(1,statuss);
+            ResultSet rs=ps.executeQuery();  
+            while(rs.next()){  
+                Concept c=new Concept();  
+                c.setConcept_paper_id(rs.getInt(1));  
+                c.setTitle(rs.getString(2));  
+                c.setConcept_paper(rs.getString(3));  
+                c.setReg_no(rs.getString(4));  
+                c.setDate_of_submission(rs.getString(5));
+                c.setDate_of_acceptance(rs.getString(6));
+                c.setStatus(rs.getString(7));  
+                list.add(c);  
+            }  
+            con.close();  
+        }catch(Exception c){c.printStackTrace();
+        }  
+          
+        return list;  
+    }  
+    
+    
     public static List<Concept> getAllConceptByStudent(int reg_no){  
         List<Concept> list=new ArrayList<Concept>();  
           

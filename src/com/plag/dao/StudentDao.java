@@ -121,7 +121,7 @@ public class StudentDao implements DatabaseConn{
             while(rs.next()){  
                 Student s=new Student();  
                 s.setReg_no(rs.getInt(1));  
-                s.setFirst_name(rs.getString(32));  
+                s.setFirst_name(rs.getString(2));  
                 s.setLast_name(rs.getString(3));
                 s.setEmail(rs.getString(4));  
                 s.setPhone_number(rs.getString(5));

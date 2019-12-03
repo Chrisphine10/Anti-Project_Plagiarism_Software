@@ -48,8 +48,7 @@ public class Add_Lecturer_Servlet extends HttpServlet {
             System.out.println("Sorry! unable to save record");  
         }  
           
-        System.out.close();  
-        
+        System.out.close();        
         
 	}
 		 else {

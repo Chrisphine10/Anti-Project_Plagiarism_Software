@@ -27,12 +27,15 @@ List<Student> list=StudentDao.getAllStudents();
 for(Student s:list) { 
 %>
 <tr>
-<td><%= s.getFirst_name() + s.getLast_name()%></td>
+<%
+Concept conc = ConceptDao.getConceptByStudent(s.getReg_no());
+%>
+<td><%= s.getFirst_name() + " " + s.getLast_name()%></td>
 <td><%= s.getReg_no() %></td>
 <td><%= s.getEmail() %></td>
 <td>
-<form action="/conceptview.jsp" method="post">
-<input name="reg_no" type="text" hidden="true" value="<%= s.getReg_no() %>">
+<form action="conceptview.jsp" method="post">
+<input name="id" type="number" hidden="true" value="<%= conc.getConcept_paper_id() %>">
 <input type="submit" value="View Concept">
 </form>
 </td>
@@ -45,6 +48,6 @@ for(Student s:list) {
 <% 
  }
  else {
-	 request.getRequestDispatcher("../auth/login.jsp").include(request, response);
+	 request.getRequestDispatcher("../auth/leclogin.jsp").include(request, response);
  }
 %>
