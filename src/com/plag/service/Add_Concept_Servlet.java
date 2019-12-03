@@ -2,10 +2,14 @@ package com.plag.service;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.plag.PlagServletAPI;
 import com.plag.dao.ConceptDao;
 import com.plag.model.Concept;
 
@@ -27,17 +31,16 @@ public class Add_Concept_Servlet extends HttpServlet {
 		String state = "pending";
 		 LocalDate today_l = LocalDate.now();
          String today = today_l.toString();
-		/*
+		
+         Boolean v = false;
 		PlagServletAPI plag = new PlagServletAPI();
 		List<Concept> list=ConceptDao.getAllConcepts();
 		for(Concept c:list){
 			String testpaper = c.concept_paper;
-			HttpResponse<String> test = plag.plagcheck(concept_paper, testpaper);
-			String newtest = test.getBody();
-			System.out.println(newtest);
-		   
-		} */
-		if (x == 0) {
+			String s = plag.plagcheck(concept_paper, testpaper).getBody();
+			v = s.isEmpty();
+		} 
+		if (v) {
 			Concept c = new Concept();
 			c.setTitle(title);
 			c.setConcept_paper(concept_paper);

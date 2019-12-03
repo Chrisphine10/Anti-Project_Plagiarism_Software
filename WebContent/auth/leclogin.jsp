@@ -11,7 +11,7 @@
 <h1>Lecturer Login</h1>
 	<p>Student, click <a href="login.jsp">here</a></p>
 	<h3>Lecturer Login</h3>
-		<form action="../authservlet" method="post">
+		<form action="../lecauth" method="post">
 			<label>Email</label><br>
 			<input type="email" name="email"
 				placeholder="Enter your email address" required="required"><br>

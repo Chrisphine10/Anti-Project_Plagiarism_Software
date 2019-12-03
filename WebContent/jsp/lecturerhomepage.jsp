@@ -16,7 +16,7 @@
 		<a href="../jsp/previousconceptlist.jsp"><button>Concept List</button></a>
 		<a href="../jsp/submitconcept.jsp"><button>Add Concept</button></a>
 		<a href="../auth/lecturersignup.jsp"><button>Add New Lecturer</button></a>
-		<a href="..jsp/logout.jsp"><button>Logout</button></a>
+		<a href="logout.jsp"><button>Logout</button></a>
 	</div>
 </body>
 </html>

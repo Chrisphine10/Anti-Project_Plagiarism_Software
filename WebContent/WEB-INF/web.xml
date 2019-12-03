@@ -28,7 +28,6 @@
 		<url-pattern>/authservlet</url-pattern>
 	</servlet-mapping>
 	
-	
 	<servlet>
 		<servlet-name>Add_Student_Servlet</servlet-name>
 		<servlet-class>com.plag.service.Add_Student_Servlet</servlet-class>
@@ -45,7 +44,15 @@
 		<servlet-name>Add_Concept_Servlet</servlet-name>
 		<url-pattern>/addconcept</url-pattern>
 	</servlet-mapping>
-
+<servlet>
+		<servlet-name>LecAuthServlet</servlet-name>
+		<servlet-class>com.plag.service.LecAuthServlet</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>LecAuthServlet</servlet-name>
+		<url-pattern>/lecauth</url-pattern>
+	</servlet-mapping>
 	<servlet>
 		<servlet-name>Delete_Lecturer_Servlet</servlet-name>
 		<servlet-class>com.plag.service.Delete_Lecturer_Servlet</servlet-class>
