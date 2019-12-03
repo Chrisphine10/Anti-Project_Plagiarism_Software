@@ -56,11 +56,26 @@ public class ConceptDao implements DatabaseConn{
           
         return status;  
     }  
+    public static int updatestatus(Concept c){  
+        int status=0;  
+        try{  
+            Connection con=ConceptDao.getConnection();  
+            PreparedStatement ps=con.prepareStatement(  
+                         "update concept_paper set status=? where concept_paper_id=?");  
+            ps.setString(1,c.getStatus()); 
+            ps.setInt(2,c.getConcept_paper_id()); 
+            status=ps.executeUpdate();  
+           
+            con.close();  
+        }catch(Exception ex){ex.printStackTrace();}  
+          
+        return status;  
+    } 
     public static int delete(int id){  
         int status=0;  
         try{  
             Connection con=ConceptDao.getConnection();  
-            PreparedStatement ps=con.prepareStatement("delete from concept_paper where id=?");  
+            PreparedStatement ps=con.prepareStatement("delete from concept_paper where concept_paper_id=?");  
             ps.setInt(1,id);  
             status=ps.executeUpdate();  
               

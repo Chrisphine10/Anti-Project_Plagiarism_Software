@@ -53,7 +53,7 @@ function goBack() {
 	 <% 
  }
  else {
-	 request.getRequestDispatcher("../auth/login.jsp").include(request, response);
+	 response.sendRedirect("../auth/login.jsp");
  }
 %>
 </body>

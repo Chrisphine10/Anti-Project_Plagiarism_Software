@@ -43,7 +43,7 @@ public class Update_Lecturer_Servlet extends HttpServlet {
 
 		int status = LecturerDao.update(l);
 		if (status > 0) {
-			response.sendRedirect("/viewlecturer");
+			response.sendRedirect("jsp/lecturerhomepage.jsp");
 		} else {
 			out.println("Sorry! unable to update record");
 		}

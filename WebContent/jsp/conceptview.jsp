@@ -48,7 +48,6 @@
 			%>
 			<form action="conceptstatus.jsp" method="post">
 			<input type="text" hidden="true" name="concept_id" value="<%= c.getConcept_paper_id()%>">
-			
 			<input type="submit" name="accept" value="Accept">
 			<input type="submit" name="reject" value="Reject">
 			</form>

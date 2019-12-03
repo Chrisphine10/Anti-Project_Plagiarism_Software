@@ -48,6 +48,6 @@ Concept conc = ConceptDao.getConceptByStudent(s.getReg_no());
 <% 
  }
  else {
-	 request.getRequestDispatcher("../auth/leclogin.jsp").include(request, response);
+	 response.sendRedirect("../auth/leclogin.jsp");
  }
 %>

@@ -80,10 +80,6 @@
 		<servlet-name>Update_Student_Servlet</servlet-name>
 		<servlet-class>com.plag.service.Update_Student_Servlet</servlet-class>
 	</servlet>
-	<servlet>
-		<servlet-name>Update_Concept_Servlet</servlet-name>
-		<servlet-class>com.plag.service.Update_Concept_Servlet</servlet-class>
-	</servlet>
 
 	<servlet-mapping>
 		<servlet-name>Update_Lecturer_Servlet</servlet-name>
@@ -93,10 +89,7 @@
 		<servlet-name>Update_Student_Servlet</servlet-name>
 		<url-pattern>/updatestudent</url-pattern>
 	</servlet-mapping>
-	<servlet-mapping>
-		<servlet-name>Update_Concept_Servlet</servlet-name>
-		<url-pattern>/updateconcept</url-pattern>
-	</servlet-mapping>
+	
 	<error-page>
 		<!-- Missing login -->
 		<error-code>401</error-code>

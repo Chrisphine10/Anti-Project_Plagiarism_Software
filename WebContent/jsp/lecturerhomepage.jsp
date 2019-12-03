@@ -15,6 +15,7 @@
 		<a href="../jsp/studentlist.jsp"><button>Student List</button></a>
 		<a href="../jsp/previousconceptlist.jsp"><button>Concept List</button></a>
 		<a href="../jsp/submitconcept.jsp"><button>Add Concept</button></a>
+		<a href="../auth/lecturersignup.jsp"><button>Add New Lecturer</button></a>
 		<a href="..jsp/logout.jsp"><button>Logout</button></a>
 	</div>
 </body>
@@ -22,6 +23,6 @@
 <% 
  }
  else {
-	 request.getRequestDispatcher("../auth/leclogin.jsp").include(request, response);
+	 response.sendRedirect("../auth/leclogin.jsp");
  }
 %>
