@@ -20,10 +20,9 @@ public class AuthServlet extends HttpServlet {
 		 String lecturer = request.getParameter("lecturerlogin");
 		if(student != null) {
 			
-	    String s_reg_no = request.getParameter("reg_no");
+	    String id = request.getParameter("reg_no");
 	    Boolean test = false;
 		String passwordraw = request.getParameter("password");
-		int id = Integer.parseInt(s_reg_no);
 		Student s = StudentDao.getStudentById(id);
 		String realpass = s.getPassword();
 		String salt = s.getSalt();

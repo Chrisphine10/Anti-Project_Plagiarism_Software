@@ -25,8 +25,7 @@ public class Update_Student_Servlet extends HttpServlet {
 	        HttpSession session = request.getSession();
 	        
 			if (session.getAttribute("student") != null) {
-	        String sid=request.getParameter("reg_no");  
-	        int id=Integer.parseInt(sid);  
+	        String id=request.getParameter("reg_no");
 	        String fname=request.getParameter("fname");
 	        String lname=request.getParameter("lname"); 
 	        String email=request.getParameter("email");  

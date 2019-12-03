@@ -14,8 +14,7 @@
 	int id = Integer.parseInt(sid);
 		Concept c = ConceptDao.getConceptById(id);
 	
-		String s_reg_no = c.getReg_no();
-		int reg_no = Integer.parseInt(s_reg_no);
+		String reg_no = c.getReg_no();
 		Student s = StudentDao.getStudentById(reg_no);
 	%>
 	<div class="concept">
@@ -31,7 +30,7 @@
 	 if (session.getAttribute("student") != null) {
 		
 		Student stude = (Student) session.getAttribute("student");
-		int confirm = stude.getReg_no();
+		String confirm = stude.getReg_no();
 		
 		if(confirm == reg_no) {
 		

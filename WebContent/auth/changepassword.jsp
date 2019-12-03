@@ -9,8 +9,7 @@
 </head>
 <body>
 <%
-	String sid = request.getParameter("reg_no");
-	int id = Integer.parseInt(sid);
+	String id = request.getParameter("reg_no");
 	Student s = StudentDao.getStudentById(id);
 	%>
 <form action="../updatestudent" method="post">

@@ -21,8 +21,7 @@ public class Delete_Student_Servlet extends HttpServlet {
     	HttpSession session = request.getSession();
 		 if (session.getAttribute("student") != null) {
 		 if(accept != null) {
-	        String sid=request.getParameter("id");  
-	        int id=Integer.parseInt(sid);  
+	        String id=request.getParameter("id"); 
 	        StudentDao.delete(id);  
 	        session.removeAttribute("student");
 	        response.sendRedirect("index.jsp");

@@ -106,12 +106,12 @@ public class ConceptDao implements DatabaseConn{
           
         return c;  
     }  
-    public static Concept getConceptByStudent(int reg_no){ 
+    public static Concept getConceptByStudent(String reg_no){ 
     	Concept c=new Concept(); 
         try{  
             Connection con=ConceptDao.getConnection();  
             PreparedStatement ps=con.prepareStatement("select * from concept_paper where reg_no=?");  
-            ps.setInt(1,reg_no);  
+            ps.setString(1,reg_no);  
             ResultSet rs=ps.executeQuery();  
             if(rs.next()){  
                 c.setConcept_paper_id(rs.getInt(1));  
@@ -177,13 +177,13 @@ public class ConceptDao implements DatabaseConn{
     }  
     
     
-    public static List<Concept> getAllConceptByStudent(int reg_no){  
+    public static List<Concept> getAllConceptByStudent(String reg_no){  
         List<Concept> list=new ArrayList<Concept>();  
           
         try{  
             Connection con=ConceptDao.getConnection();  
             PreparedStatement ps=con.prepareStatement("select * from concept_paper where reg_no=?");  
-            ps.setInt(1,reg_no);
+            ps.setString(1,reg_no);
             ResultSet rs=ps.executeQuery();  
             while(rs.next()){  
                 Concept c=new Concept();  

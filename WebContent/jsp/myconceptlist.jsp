@@ -14,7 +14,7 @@
 <body>
 	<%
 	Student s = (Student) session.getAttribute("student");
-	int reg_no = s.getReg_no();
+	String reg_no = s.getReg_no();
     List <Concept> list= ConceptDao.getAllConceptByStudent(reg_no);
 %>
 
