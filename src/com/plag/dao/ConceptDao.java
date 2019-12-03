@@ -7,33 +7,31 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.database.DatabaseConn;
 import com.plag.model.Concept;
 
-public class ConceptDao {
+public class ConceptDao implements DatabaseConn{
 
 	public static Connection getConnection(){  
-        Connection con=null;  
+        Connection conn=null;  
         try{  
-            Class.forName("oracle.jdbc.driver.OracleDriver");  
-            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");  
-        }catch(Exception e){System.out.println(e);}  
-        return con;  
+            Class.forName("com.mysql.cj.jdbc.Driver");  
+            
+            conn=DriverManager.getConnection(dbURL, username, password);  
+        }catch(Exception e){System.out.println("DB connection failed " + e);}  
+        return conn;  
     }  
     public static int save(Concept c){  
         int status=0;  
         try{  
             Connection con=ConceptDao.getConnection();  
             PreparedStatement ps=con.prepareStatement(  
-                         "insert into user905(name,password,email,country) values (?,?,?,?)");  
-            ps.setInt(1,c.getConcept_paper_id());  
-            ps.setString(2,c.getTitle());  
-            ps.setString(3,c.getConcept_paper());  
-            ps.setString(4,c.getReg_no());
-            ps.setString(5,c.getDate_of_submission());
-            ps.setString(6,c.getDate_of_acceptance());
-            ps.setString(7,c.getStatus());
-            
-              
+                         "insert into concept_paper(title, concept_paper, reg_no, date_of_submission, status) values (?,?,?,?,?)");  
+            ps.setString(1,c.getTitle());  
+            ps.setString(2,c.getConcept_paper());  
+            ps.setString(3,c.getReg_no());
+            ps.setString(4,c.getDate_of_submission());
+            ps.setString(5,c.getStatus());              
             status=ps.executeUpdate();  
               
             con.close();  
@@ -46,15 +44,11 @@ public class ConceptDao {
         try{  
             Connection con=ConceptDao.getConnection();  
             PreparedStatement ps=con.prepareStatement(  
-                         "update user905 set name=?,password=?,email=?,country=? where id=?");  
-            ps.setInt(1,c.getConcept_paper_id());  
-            ps.setString(2,c.getTitle());  
-            ps.setString(3,c.getConcept_paper());  
-            ps.setString(4,c.getReg_no());
-            ps.setString(5,c.getDate_of_submission());
-            ps.setString(6,c.getDate_of_acceptance());
-            ps.setString(7,c.getStatus());
-              
+                         "update concept_paper set title=?,concept_paper=?,reg_no=? where reg_no=?");  
+            ps.setString(1,c.getTitle());  
+            ps.setString(2,c.getConcept_paper());  
+            ps.setString(3,c.getReg_no());
+            ps.setString(4,c.getReg_no()); 
             status=ps.executeUpdate();  
            
             con.close();  
@@ -66,7 +60,7 @@ public class ConceptDao {
         int status=0;  
         try{  
             Connection con=ConceptDao.getConnection();  
-            PreparedStatement ps=con.prepareStatement("delete from user905 where id=?");  
+            PreparedStatement ps=con.prepareStatement("delete from concept_paper where id=?");  
             ps.setInt(1,id);  
             status=ps.executeUpdate();  
               
@@ -80,7 +74,7 @@ public class ConceptDao {
           
         try{  
             Connection con=ConceptDao.getConnection();  
-            PreparedStatement ps=con.prepareStatement("select * from user905 where id=?");  
+            PreparedStatement ps=con.prepareStatement("select * from concept_paper where concept_paper_id=?");  
             ps.setInt(1,id);  
             ResultSet rs=ps.executeQuery();  
             if(rs.next()){  
@@ -97,16 +91,14 @@ public class ConceptDao {
           
         return c;  
     }  
-    public static List<Concept> getConceptByStudent(int reg_no){  
-    	List<Concept> list=new ArrayList<Concept>();  
-          
+    public static Concept getConceptByStudent(int reg_no){ 
+    	Concept c=new Concept(); 
         try{  
             Connection con=ConceptDao.getConnection();  
-            PreparedStatement ps=con.prepareStatement("select * from user905 where reg_no=?");  
+            PreparedStatement ps=con.prepareStatement("select * from concept_paper where reg_no=?");  
             ps.setInt(1,reg_no);  
             ResultSet rs=ps.executeQuery();  
-            while(rs.next()){  
-            	Concept c=new Concept(); 
+            if(rs.next()){  
                 c.setConcept_paper_id(rs.getInt(1));  
                 c.setTitle(rs.getString(2));  
                 c.setConcept_paper(rs.getString(3));  
@@ -114,19 +106,18 @@ public class ConceptDao {
                 c.setDate_of_submission(rs.getString(5));
                 c.setDate_of_acceptance(rs.getString(6));
                 c.setStatus(rs.getString(7));
-                list.add(c);
             }  
             con.close();  
-        }catch(Exception c){c.printStackTrace();}  
+        }catch(Exception ex){ex.printStackTrace();}  
           
-        return list;  
+        return c;  
     }
     public static List<Concept> getAllConcepts(){  
         List<Concept> list=new ArrayList<Concept>();  
           
         try{  
             Connection con=ConceptDao.getConnection();  
-            PreparedStatement ps=con.prepareStatement("select * from user905");  
+            PreparedStatement ps=con.prepareStatement("select * from concept_paper");  
             ResultSet rs=ps.executeQuery();  
             while(rs.next()){  
                 Concept c=new Concept();  
@@ -144,5 +135,28 @@ public class ConceptDao {
           
         return list;  
     }  
-	
+    public static List<Concept> getAllConceptByStudent(int reg_no){  
+        List<Concept> list=new ArrayList<Concept>();  
+          
+        try{  
+            Connection con=ConceptDao.getConnection();  
+            PreparedStatement ps=con.prepareStatement("select * from concept_paper where reg_no=?");  
+            ps.setInt(1,reg_no);
+            ResultSet rs=ps.executeQuery();  
+            while(rs.next()){  
+                Concept c=new Concept();  
+                c.setConcept_paper_id(rs.getInt(1));  
+                c.setTitle(rs.getString(2));  
+                c.setConcept_paper(rs.getString(3));  
+                c.setReg_no(rs.getString(4));  
+                c.setDate_of_submission(rs.getString(5));
+                c.setDate_of_acceptance(rs.getString(6));
+                c.setStatus(rs.getString(7));  
+                list.add(c);  
+            }  
+            con.close();  
+        }catch(Exception c){c.printStackTrace();}  
+          
+        return list;  
+    }  
 }

@@ -9,19 +9,41 @@
 </head>
 <body>
 	<%
-		String sid = request.getParameter("reg_no");
-		int id = Integer.parseInt(sid);
-		if (sid != null) {
+	String sid = request.getParameter("id");
+	int id = Integer.parseInt(sid);
 		Concept c = ConceptDao.getConceptById(id);
-		
-		}
-		Concept c = ConceptDao.getConceptById(id);
+		String s_reg_no = c.getReg_no();
+		int reg_no = Integer.parseInt(s_reg_no);
+		Student s = StudentDao.getStudentById(reg_no);
 	%>
 	<div class="concept">
 		<h1>Concept Paper</h1>
 		<label>Title:</label><label><%= c.getTitle() %></label><br> <label>Student
-			Name:</label><label><%= c.getReg_no() %></label><br>
-		<iframe> </iframe>
+			Name:</label><label><%= s.getFirst_name() + " " + s.getLast_name() %></label><br>
+		<label> <%= c.getConcept_paper() %>
+		</label>
+	</div>
+	<div>
+	<%
+	 if (session.getAttribute("student") != null) {
+		
+		Student stude = (Student) session.getAttribute("student");
+		int confirm = stude.getReg_no();
+		
+		if(confirm == reg_no) {
+		
+		%>
+		<form action="deleteconcept.jsp" method="post">
+		<input type="text" hidden="true" name="concept_id" value="<%= c.getConcept_paper_id()%>">
+		<input type="submit" name="concept" value="Delete Concept">
+		</form>
+		<%
+		}
+		 
+	}
+	
+	%>
+	
 	</div>
 </body>
 </html>

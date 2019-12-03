@@ -20,12 +20,17 @@ public class Delete_Concept_Servlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		HttpSession session = request.getSession();
-		 if (session.getAttribute("lecturer") != null) {
+		 if (session.getAttribute("lecturer") != null && session.getAttribute("student") != null) {
 			
 	        String sid=request.getParameter("id");  
 	        int id=Integer.parseInt(sid);  
 	        ConceptDao.delete(id);  
-	        response.sendRedirect("ViewServlet");
+	        if (session.getAttribute("lecturer") != null) {
+	        	response.sendRedirect("jsp/lecturerhomepage.jsp");
+	        }
+	        else {
+	        	response.sendRedirect("jsp/studenthomepage.jsp");
+	        }
 	}
 	else {
 		 System.out.println("Unauthorised access");

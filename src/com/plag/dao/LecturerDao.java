@@ -7,23 +7,25 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.database.DatabaseConn;
 import com.plag.model.Lecturer;
 
-public class LecturerDao {
+public class LecturerDao implements DatabaseConn {
 	public static Connection getConnection(){  
-        Connection con=null;  
+        Connection conn=null;  
         try{  
-            Class.forName("oracle.jdbc.driver.OracleDriver");  
-            con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");  
-        }catch(Exception e){System.out.println(e);}  
-        return con;  
-    }  
+            Class.forName("com.mysql.cj.jdbc.Driver");  
+            
+            conn=DriverManager.getConnection(dbURL, username, password);  
+        }catch(Exception e){System.out.println("DB connection failed " + e);}  
+        return conn;  
+    }   
     public static int save(Lecturer l){  
         int status=0;  
         try{  
             Connection con=ConceptDao.getConnection();  
             PreparedStatement ps=con.prepareStatement(  
-                         "insert into lecturer_details(lecturer_id_no,fname, lname, password, email, payroll_number, email) values (?,?,?,?,?,?,?)");  
+                         "insert into lecturer_details(lecturer_id_no,first_name, lname, password, email, payroll_number, email) values (?,?,?,?,?,?,?)");  
             ps.setInt(1,l.getLecturer_id_no());  
             ps.setString(2,l.getFirst_name());  
             ps.setString(3,l.getLast_name());  

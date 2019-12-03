@@ -2,7 +2,6 @@ package com.plag.service;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -33,9 +32,7 @@ public class Add_Lecturer_Servlet extends HttpServlet {
 		String passwordraw = request.getParameter("firstpassword");
 		String salt = PasswordUtils.getSalt(30);
 		String mySecurePassword = PasswordUtils.generateSecurePassword(passwordraw, salt);
-		RequestDispatcher rd = request.getRequestDispatcher("index.jsp");
-        rd.forward(request, response);
-        
+		
         Lecturer l = new Lecturer();
         l.setFirst_name(fname);
         l.setLast_name(lname);

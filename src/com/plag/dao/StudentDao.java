@@ -23,13 +23,14 @@ public class StudentDao implements DatabaseConn{
         int status=0;  
         try{  
             Connection con=StudentDao.getConnection();  
-            PreparedStatement ps=con.prepareStatement("insert into student_details (reg_no, first_name, last_name, email, phone_no, password) values (?,?,?,?,?,?)");  
+            PreparedStatement ps=con.prepareStatement("insert into student_details (reg_no, first_name, last_name, email, phone_no, password, salt) values (?,?,?,?,?,?,?)");  
             ps.setInt(1,s.getReg_no());  
             ps.setString(2,s.getFirst_name());  
             ps.setString(3,s.getLast_name());
             ps.setString(4,s.getEmail());
             ps.setString(5,s.getPhone_number());
-            ps.setString(6,s.getPassword());    
+            ps.setString(6,s.getPassword());
+            ps.setString(7,s.getSalt());
             status=ps.executeUpdate();  
               
             con.close();  
@@ -42,14 +43,13 @@ public class StudentDao implements DatabaseConn{
         try{  
             Connection con=StudentDao.getConnection();  
             PreparedStatement ps=con.prepareStatement(  
-                         "update student_details set reg_no=?, first_name=?, last_name=?, email=?, phone_no=?, password=? where reg_no=?");  
+                         "update student_details set reg_no=?, first_name=?, last_name=?, email=?, phone_no=? where reg_no=?");  
             ps.setInt(1,s.getReg_no());  
             ps.setString(2,s.getFirst_name());  
             ps.setString(3,s.getLast_name());
-            ps.setString(4,s.getPassword());
+            ps.setString(4,s.getEmail());
             ps.setString(5,s.getPhone_number());
-            ps.setString(6,s.getEmail());
-                          
+            ps.setInt(6, s.getReg_no());  
             status=ps.executeUpdate();  
               
             con.close();  
@@ -57,6 +57,25 @@ public class StudentDao implements DatabaseConn{
           
         return status;  
     }  
+    public static int updatepassword(Student s){  
+        int status=0;  
+        try{  
+            Connection con=StudentDao.getConnection();  
+            PreparedStatement ps=con.prepareStatement(  
+                         "update student_details set password=? where reg_no=?");  
+
+            ps.setString(1,s.getPassword());
+            ps.setInt(2,s.getReg_no());   
+            status=ps.executeUpdate();  
+              
+            con.close();  
+        }catch(Exception ex){ex.printStackTrace();}  
+          
+        return status;  
+    }  
+    
+    
+    
     public static int delete(int id){  
         int status=0;  
         try{  
@@ -80,11 +99,12 @@ public class StudentDao implements DatabaseConn{
             ResultSet rs=ps.executeQuery();  
             if(rs.next()){  
                 s.setReg_no(rs.getInt(1));  
-                s.setEmail(rs.getString(2));  
-                s.setFirst_name(rs.getString(3));  
-                s.setLast_name(rs.getString(4));  
-                s.setPassword(rs.getString(5));
-                s.setPhone_number(rs.getString(6));
+                s.setFirst_name(rs.getString(2));  
+                s.setLast_name(rs.getString(3));
+                s.setEmail(rs.getString(4));  
+                s.setPhone_number(rs.getString(5));
+                s.setPassword(rs.getString(6));
+                s.setSalt(rs.getString(7));
             }  
             con.close();  
         }catch(Exception ex){ex.printStackTrace();}  
@@ -100,13 +120,11 @@ public class StudentDao implements DatabaseConn{
             ResultSet rs=ps.executeQuery();  
             while(rs.next()){  
                 Student s=new Student();  
-
                 s.setReg_no(rs.getInt(1));  
-                s.setEmail(rs.getString(2));  
-                s.setFirst_name(rs.getString(3));  
-                s.setLast_name(rs.getString(4));  
-                s.setPassword(rs.getString(5));
-                s.setPhone_number(rs.getString(6));
+                s.setFirst_name(rs.getString(32));  
+                s.setLast_name(rs.getString(3));
+                s.setEmail(rs.getString(4));  
+                s.setPhone_number(rs.getString(5));
                 list.add(s);  
             }  
             con.close();  

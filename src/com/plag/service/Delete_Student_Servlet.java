@@ -19,13 +19,17 @@ public class Delete_Student_Servlet extends HttpServlet {
 		// TODO Auto-generated method stub
     	String accept = request.getParameter("accept");
     	HttpSession session = request.getSession();
-		 if (session.getAttribute("student") != null && accept != null) {
-		
+		 if (session.getAttribute("student") != null) {
+		 if(accept != null) {
 	        String sid=request.getParameter("id");  
 	        int id=Integer.parseInt(sid);  
 	        StudentDao.delete(id);  
+	        session.removeAttribute("student");
 	        response.sendRedirect("index.jsp");
-		
+		 }
+		 else {
+			response.sendRedirect("jsp/studenthomepage.jsp");
+		 }
 	}
 		 else {
 			 System.out.println("Unauthorised access");

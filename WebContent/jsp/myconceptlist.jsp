@@ -15,7 +15,7 @@
 	<%
 	Student s = (Student) session.getAttribute("student");
 	int reg_no = s.getReg_no();
-    List <Concept> list= ConceptDao.getConceptByStudent(reg_no);
+    List <Concept> list= ConceptDao.getAllConceptByStudent(reg_no);
 %>
 
 <table>
@@ -35,7 +35,7 @@ for(Concept c:list){
 <td><%= c.getDate_of_submission() %></td>
 <td><%= c.getStatus() %></td>
 <td>
-<form action="/conceptview.jsp" method="post">
+<form action="conceptview.jsp" method="post">
 <input type="text" hidden="true" name="id" value="<%= c.concept_paper_id %>">
 <input type="submit" value="View Concept">
 </form>

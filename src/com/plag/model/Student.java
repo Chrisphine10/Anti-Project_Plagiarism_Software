@@ -7,15 +7,10 @@ public class Student {
 	  public String email;
 	  public String phone_number;
 	  public String password;
-	  public String lecturer_id_no;
+	  public String salt;
 	  
-	public Student() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 	public Student(int reg_no, String first_name, String last_name, String email, String phone_number, String password,
-			String lecturer_id_no) {
+			String salt) {
 		super();
 		this.reg_no = reg_no;
 		this.first_name = first_name;
@@ -23,7 +18,11 @@ public class Student {
 		this.email = email;
 		this.phone_number = phone_number;
 		this.password = password;
-		this.lecturer_id_no = lecturer_id_no;
+		this.salt = salt;
+	}
+
+	public Student() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public int getReg_no() {
@@ -74,12 +73,14 @@ public class Student {
 		this.password = password;
 	}
 
-	public String getLecturer_id_no() {
-		return lecturer_id_no;
+	public String getSalt() {
+		return salt;
 	}
 
-	public void setLecturer_id_no(String lecturer_id_no) {
-		this.lecturer_id_no = lecturer_id_no;
+	public void setSalt(String salt) {
+		this.salt = salt;
 	}
-
+	  
+	
+	  
 }

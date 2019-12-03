@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import com.appsdeveloperblog.encryption.PasswordUtils;
 import com.plag.dao.LecturerDao;
 import com.plag.dao.StudentDao;
@@ -21,20 +20,22 @@ public class AuthServlet extends HttpServlet {
 		if(student != null) {
 			
 	    String s_reg_no = request.getParameter("reg_no");
-
+	    Boolean test = false;
 		String passwordraw = request.getParameter("password");
-		String salt = PasswordUtils.getSalt(30);
-		String mySecurePassword = PasswordUtils.generateSecurePassword(passwordraw, salt);
 		int id = Integer.parseInt(s_reg_no);
 		Student s = StudentDao.getStudentById(id);
 		String realpass = s.getPassword();
-		if(mySecurePassword == realpass) {
-			request.getRequestDispatcher("../jsp/studenthomepage.jsp").forward(request, response);
+		String salt = s.getSalt();
+		test = PasswordUtils.verifyUserPassword(passwordraw, realpass, salt);
+		System.out.println(test);
+		if(test == true) {
 		    HttpSession session = request.getSession();
 			session.setAttribute("student", s);
+            response.sendRedirect("jsp/studenthomepage.jsp");
 		}
 		else {
 			System.out.println("<p>Password entered is incorrect!</p>");
+			response.sendRedirect("auth/login.jsp");
 	}
 		} 
 		else
@@ -47,12 +48,14 @@ public class AuthServlet extends HttpServlet {
 		Lecturer l = LecturerDao.getLecturerByEmail(email);
 		String realpass = l.getPassword();
 		if(mySecurePassword == realpass) {
-			request.getRequestDispatcher("../jsp/lecturerhomepage.jsp").include(request, response); 
+			System.out.println("<p>Success!</p>");
 			HttpSession session = request.getSession();
 			session.setAttribute("lecturer", l);
+			response.sendRedirect("../jsp/lecturerhomepage.jsp"); 
 		}
 		else {
 			System.out.println("<p>Password entered is incorrect!</p>");
+			response.sendRedirect("auth/leclogin.jsp");
 		}
 
 

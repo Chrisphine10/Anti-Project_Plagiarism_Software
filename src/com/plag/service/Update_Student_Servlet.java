@@ -23,27 +23,26 @@ public class Update_Student_Servlet extends HttpServlet {
 	        response.setContentType("text/html");  
 	        PrintWriter out=response.getWriter();  
 	        HttpSession session = request.getSession();
-			 if (session.getAttribute("student") != null) {
-				
+	        
+			if (session.getAttribute("student") != null) {
 	        String sid=request.getParameter("reg_no");  
 	        int id=Integer.parseInt(sid);  
 	        String fname=request.getParameter("fname");
 	        String lname=request.getParameter("lname"); 
 	        String email=request.getParameter("email");  
-	        String phone=request.getParameter("phone_number");
-	        String password=request.getParameter("password"); 
+	        String phone=request.getParameter("phone_no");
 	          
-	        Student s=new Student();  
+	      Student s=new Student();  
           s.setReg_no(id);  
           s.setEmail(email);
           s.setFirst_name(fname);  
           s.setLast_name(lname);
-          s.setPassword(password);
           s.setPhone_number(phone);
 	          
 	        int status=StudentDao.update(s);  
 	        if(status>0){  
-	            response.sendRedirect("/viewstudent");  
+	        	session.setAttribute("student", s);
+	            response.sendRedirect("jsp/updateaccount.jsp");  
 	        }else{  
 	            out.println("Sorry! unable to update record");  
 	        }  
@@ -52,6 +51,7 @@ public class Update_Student_Servlet extends HttpServlet {
 	    }
 			 else {
 				 System.out.println("Unauthorised access");
+				 response.sendRedirect("index.jsp");  
 			 }
 			}
 }

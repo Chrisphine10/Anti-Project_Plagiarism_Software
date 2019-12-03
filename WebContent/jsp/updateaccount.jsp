@@ -19,18 +19,22 @@
 	Student s = (Student) session.getAttribute("student");
 	%>
 		<form action="../updatestudent" method="post">
-			<label>First Name</label><br>
+			<label for="fname">First Name</label><br>
 			<input type="text" name="fname" required="required"
 				placeholder="Enter your first name" value="<%= s.getFirst_name() %>"><br>
-				<label>Last Name</label><br>
+				<label for="lname">Last Name</label><br>
 				<input type="text" name="lname" required="required"
 				placeholder="Enter your last name" value="<%= s.getLast_name() %>"><br>
-				<label>Registration	Number</label><br>
-				<input type="text" name="regno" value="<%= s.getReg_no() %>" placeholder="Enter your registration number" required="required"><br>
-			
-			<input type="password" hidden="true" name="password" value="<%= s.getPassword() %>"
-				placeholder="Enter your password" required="required"><br>
-				<input type="submit" value="Sign Up">
+				<label for="reg_no">Registration	Number</label><br>
+				<input type="number" name="reg_no" value="<%= s.getReg_no() %>" placeholder="Enter your registration number" required="required"><br>			
+            <label for="email">Email</label><br>
+				<input type="email" name="email" value="<%= s.getEmail() %>" placeholder="Enter your email address"><br>
+				<label for="phone_no">Phone Number</label><br>
+				<input type="text" name="phone_no" value="<%= s.getPhone_number() %>" placeholder="Enter your phone number"><br>	
+				<input type="submit" value="Update">
+		</form><br>
+		<form action="deleteaccount.jsp" method="post">
+		<input type="submit" value="delete account">
 		</form>
 	</div>
 </body>

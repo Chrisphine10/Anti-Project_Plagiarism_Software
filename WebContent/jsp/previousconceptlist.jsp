@@ -29,8 +29,8 @@ for(Concept c:list){
 <td><%= c.getDate_of_submission() %></td>
 <td><%= c.getStatus() %></td>
 <td>
-<form action="/conceptview.jsp" method="post">
-<input type="text" hidden="true" name="id" value="<%= c.concept_paper_id %>">
+<form action="conceptview.jsp" method="post">
+<input type="number" hidden="true" name="id" value="<%= c.concept_paper_id %>">
 <input type="submit" value="View Concept">
 </form>
 </td>
