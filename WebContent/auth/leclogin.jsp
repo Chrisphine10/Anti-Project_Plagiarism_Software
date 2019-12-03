@@ -19,7 +19,7 @@
 			<input type="password" name="password"
 				placeholder="Enter your password" required="required"><br>
 				<input
-				type="submit" name="lecturerlog" value="login">
+				type="submit" name="lecturerlogin" value="login">
 		</form>
 		</div>
 </body>

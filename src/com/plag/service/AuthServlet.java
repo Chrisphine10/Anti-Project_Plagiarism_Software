@@ -17,6 +17,7 @@ public class AuthServlet extends HttpServlet {
        
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 String student = request.getParameter("studentlogin");
+		 String lecturer = request.getParameter("lecturerlogin");
 		if(student != null) {
 			
 	    String s_reg_no = request.getParameter("reg_no");
@@ -38,17 +39,17 @@ public class AuthServlet extends HttpServlet {
 			response.sendRedirect("auth/login.jsp");
 	}
 		} 
-		else
+		else if(lecturer != null)
 		{
 		String email = request.getParameter("email");
 		String passwordraw = request.getParameter("password");
-		//String salt = PasswordUtils.getSalt(30);
-		//String mySecurePassword = PasswordUtils.generateSecurePassword(passwordraw, salt);
-
+		Boolean tester = false;
 		Lecturer l = LecturerDao.getLecturerByEmail(email);
+		String salt = l.getSalt(); 
 		String realpass = l.getPassword();
-		System.out.println(realpass + passwordraw);
-		if(passwordraw.equals(realpass)) {
+		tester = PasswordUtils.verifyUserPassword(passwordraw, realpass, salt);
+		System.out.println(tester);
+		if(tester == true) {
 			System.out.println("<p>Success!</p>");
 			HttpSession session = request.getSession();
 			session.setAttribute("lecturer", l);

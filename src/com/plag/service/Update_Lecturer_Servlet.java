@@ -11,9 +11,6 @@ import javax.servlet.http.HttpSession;
 import com.plag.dao.LecturerDao;
 import com.plag.model.Lecturer;
 
-/**
- * Servlet implementation class Add_Lecturer_Servlet
- */
 
 public class Update_Lecturer_Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -25,21 +22,16 @@ public class Update_Lecturer_Servlet extends HttpServlet {
 		  HttpSession session = request.getSession();
 			 if (session.getAttribute("lecturer") != null) {
 				
-		String sid = request.getParameter("lecturer_id_no");
-		int id = Integer.parseInt(sid);
 		String fname = request.getParameter("fname");
 		String lname = request.getParameter("lname");
 		String email = request.getParameter("email");
-		String phone = request.getParameter("phone_number");
-		String password = request.getParameter("password");
+		String id_no = request.getParameter("id_no");
 
 		Lecturer l = new Lecturer();
-		l.setLecturer_id_no(id);
 		l.setEmail(email);
 		l.setFirst_name(fname);
 		l.setLast_name(lname);
-		l.setPassword(password);
-		l.setPhone_number(phone);
+		l.setId_no(id_no);
 
 		int status = LecturerDao.update(l);
 		if (status > 0) {

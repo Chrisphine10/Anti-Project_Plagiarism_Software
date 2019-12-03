@@ -1,9 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
 <title>Lecturer Registration</title>
 </head>
+<%
+ if (session.getAttribute("lecturer") != null) {
+%>
 <script type="text/javascript">
 
 function matchpass(){
@@ -33,10 +38,8 @@ function matchpass(){
 				placeholder="Enter your last name"><br>
 				<label for="email">Email</label><br>
 				<input type="email" name="email" placeholder="Enter your email address"><br>
-				<label for="phone_no">Phone Number</label><br>
-				<input type="tel" name="phone_no" placeholder="Enter your phone number"><br>
-				<label for="payroll_number"></label><br>
-				<input type="text" name="payroll_number" placeholder="Enter your payroll number"><br>
+				<label for="id_no">ID Number</label><br>
+				<input type="text" name="id_no" placeholder="Enter your id number"><br>
 			<label for="password">Password</label><br>
 			<input type="password" name="password" min="8" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"
 				placeholder="Enter your password" required="required"><br>
@@ -50,3 +53,9 @@ function matchpass(){
 
 </body>
 </html>
+<% 
+ }
+ else {
+	 response.sendRedirect("../auth/leclogin.jsp");
+ }
+%>

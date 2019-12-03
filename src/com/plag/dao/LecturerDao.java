@@ -25,14 +25,13 @@ public class LecturerDao implements DatabaseConn {
         try{  
             Connection con=ConceptDao.getConnection();  
             PreparedStatement ps=con.prepareStatement(  
-                         "insert into lecturer_details(lecturer_id_no,first_name, lname, password, email, payroll_number, email) values (?,?,?,?,?,?,?)");  
-            ps.setInt(1,l.getLecturer_id_no());  
-            ps.setString(2,l.getFirst_name());  
-            ps.setString(3,l.getLast_name());  
-            ps.setString(4,l.getPassword());
-            ps.setString(5,l.getPayroll_number());
-            ps.setString(6,l.getPhone_number());
-            ps.setString(7,l.getEmail());
+                         "insert into lecturer_details(first_name, last_name, email, id_no, password, salt) values (?,?,?,?,?,?)");    
+            ps.setString(1,l.getFirst_name());  
+            ps.setString(2,l.getLast_name());
+            ps.setString(3,l.getEmail());
+            ps.setString(4,l.getId_no());
+            ps.setString(5,l.getPassword());
+            ps.setString(6,l.getSalt());
             
               
             status=ps.executeUpdate();  
@@ -47,16 +46,12 @@ public class LecturerDao implements DatabaseConn {
         try{  
             Connection con=ConceptDao.getConnection();  
             PreparedStatement ps=con.prepareStatement(  
-                         "update lecturer_details set lecturer_id_no=?,fname=?, lname=?, password=?, email=?, payroll_number=?, email=? where lecturer_id_no=?");  
-            ps.setInt(1,l.getLecturer_id_no());  
-            ps.setString(2,l.getFirst_name());  
-            ps.setString(3,l.getLast_name());  
-            ps.setString(4,l.getPassword());
-            ps.setString(5,l.getPayroll_number());
-            ps.setString(6,l.getPhone_number());
-            ps.setString(7,l.getEmail());
+                         "update lecturer_details set first_name=?, last_name=?, email=?, id_no=? where lecturer_id_no=?");  
+            ps.setString(1,l.getFirst_name());  
+            ps.setString(2,l.getLast_name());
+            ps.setString(3,l.getEmail());
+            ps.setString(4,l.getId_no());
             
-              
               
             status=ps.executeUpdate();  
               
@@ -87,13 +82,12 @@ public class LecturerDao implements DatabaseConn {
             ps.setString(1,email);  
             ResultSet rs=ps.executeQuery();  
             if(rs.next()){  
-                c.setLecturer_id_no(rs.getInt(1));  
                 c.setFirst_name(rs.getString(2));  
                 c.setLast_name(rs.getString(3));
                 c.setEmail(rs.getString(4));  
-                c.setPhone_number(rs.getString(5));
-                c.setPayroll_number(rs.getString(6));
-                c.setPassword(rs.getString(7));
+                c.setId_no(rs.getString(5));
+                c.setPassword(rs.getString(6));
+                c.setSalt(rs.getString(7));
             }  
             con.close();  
         }catch(Exception ex){ex.printStackTrace();}  
@@ -109,13 +103,11 @@ public class LecturerDao implements DatabaseConn {
             ResultSet rs=ps.executeQuery();  
             while(rs.next()){  
                 Lecturer c=new Lecturer();  
-                c.setLecturer_id_no(rs.getInt(1));  
+                c.setLecturer_id_no(rs.getString(1));  
                 c.setFirst_name(rs.getString(2));  
                 c.setLast_name(rs.getString(3));
                 c.setEmail(rs.getString(4));  
-                c.setPhone_number(rs.getString(5));
-                c.setPayroll_number(rs.getString(6));
-                c.setPassword(rs.getString(7));  
+                c.setId_no(rs.getString(5));
                 list.add(c);  
             }  
             con.close();  

@@ -24,13 +24,11 @@ public class Add_Lecturer_Servlet extends HttpServlet {
 		 if (session.getAttribute("lecturer") != null) {
 			
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		String fname = request.getParameter("first_name");
-		String lname = request.getParameter("last_name");
+		String fname = request.getParameter("fname");
+		String lname = request.getParameter("lname");
 		String email = request.getParameter("email");
-		String payroll= request.getParameter("payroll_number");
-		String s_id_no = request.getParameter("id_no");
-	    int id_no=Integer.parseInt(s_id_no);
-		String passwordraw = request.getParameter("firstpassword");
+		String id_no = request.getParameter("id_no");
+		String passwordraw = request.getParameter("password");
 		String salt = PasswordUtils.getSalt(30);
 		String mySecurePassword = PasswordUtils.generateSecurePassword(passwordraw, salt);
 		
@@ -38,9 +36,9 @@ public class Add_Lecturer_Servlet extends HttpServlet {
         l.setFirst_name(fname);
         l.setLast_name(lname);
         l.setEmail(email);
-        l.setPayroll_number(payroll);
-        l.setLecturer_id_no(id_no);
+        l.setId_no(id_no);
         l.setPassword(mySecurePassword);
+        l.setSalt(salt);
         
         int status=LecturerDao.save(l);  
         if(status>0){  
